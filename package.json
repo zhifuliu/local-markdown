@@ -36,6 +36,7 @@
     "gulp-uglify": "~0.2.1",
     "gulp-util": "^3.0.5",
     "gulp-webserver": "^0.9.1",
+    "http-proxy-middleware": "^0.17.2",
     "karma": "^0.12.15",
     "karma-chrome-launcher": "^0.1.3",
     "karma-jasmine": "^0.1.5",
