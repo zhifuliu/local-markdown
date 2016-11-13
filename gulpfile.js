@@ -15,45 +15,52 @@ var gulp = require('gulp'),
     htmlreplace = require('gulp-html-replace'),
     typescript = require('gulp-tsc'),
     gutil = require('gulp-util'),
-    browserSync = require('browser-sync').create(),
-    proxy = require('http-proxy-middleware');
+    webServer = require('gulp-webserver');
 
 // WebServer
-gulp.task('webserver', ['auto-ts'], function() {
-    var config;
-    try {
-        config = require('./proxyConfig');
-    } catch (e) {
-        config = {
-            "proxy": {
-                "host": "http://test.winbaoxian.com/"
-            },
-            "host": {
-                "port": 3000,
-                "host": "127.0.0.1"
-            }
-        };
-    }
-    var proxy_middleware = proxy(['/insure/**', '/user/**', '/static/**', '/view/**'], {
-        target: config.proxy.host,
-        changeOrigin: true
-    });
-    browserSync.init({
-        middleware: [proxy_middleware],
-        port: config.host.port,
-        server: {
-            baseDir: './src/front/'
-        },
-        index: './index.html',
-        files: './src/**/*.*'
-    });
-});
+// gulp.task('webserver', ['auto-ts'], function() {
+//     var config;
+//     try {
+//         config = require('./proxyConfig');
+//     } catch (e) {
+//         config = {
+//             "proxy": {
+//                 "host": "http://test.winbaoxian.com/"
+//             },
+//             "host": {
+//                 "port": 3000,
+//                 "host": "127.0.0.1"
+//             }
+//         };
+//     }
+//     var proxy_middleware = proxy(['/insure/**', '/user/**', '/static/**', '/view/**'], {
+//         target: config.proxy.host,
+//         changeOrigin: true
+//     });
+//     browserSync.init({
+//         middleware: [proxy_middleware],
+//         port: config.host.port,
+//         server: {
+//             baseDir: './src/front/'
+//         },
+//         index: './index.html',
+//         files: './src/**/*.*'
+//     });
+// });
 
-gulp.task('test', ['ts'], function() {
-    new KarmaServer({
-        configFile: __dirname + '/karma.conf.js',
-        action: 'run'
-    }).start();
+// WebServer
+gulp.task('web-server', ['auto-ts'], function() {
+    gulp.src('./src/front/')
+        .pipe(webServer({
+            host: '0.0.0.0',
+            fallback: 'index.html',
+            livereload: {
+                enable: true,
+                port: 8001
+            },
+            directoryListing: true,
+            port: 1314
+        }));
 });
 
 gulp.task('auto-ts', ['ts'], function() {

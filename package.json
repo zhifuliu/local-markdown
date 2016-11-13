@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/zhifuliu/local-markdown#readme",
   "devDependencies": {
-    "browser-sync": "^2.17.5",
     "chalk": "~0.4.0",
     "deeply": "~0.1.0",
     "event-stream": "~3.1.0",
@@ -36,12 +35,6 @@
     "gulp-uglify": "~0.2.1",
     "gulp-util": "^3.0.5",
     "gulp-webserver": "^0.9.1",
-    "http-proxy-middleware": "^0.17.2",
-    "karma": "^0.12.15",
-    "karma-chrome-launcher": "^0.1.3",
-    "karma-jasmine": "^0.1.5",
-    "karma-requireglobal-preprocessor": "0.0.0",
-    "karma-requirejs": "^0.2.1",
     "q": "1.0.1",
     "requirejs": "^2.1.11"
   }
