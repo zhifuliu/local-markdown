@@ -14,22 +14,39 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     htmlreplace = require('gulp-html-replace'),
     typescript = require('gulp-tsc'),
-    webServer = require('gulp-webserver'),
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
+    browserSync = require('browser-sync').create(),
+    proxy = require('http-proxy-middleware');
 
 // WebServer
-gulp.task('web-server', ['auto-ts'], function() {
-    gulp.src('./src/front')
-        .pipe(webServer({
-            host: '0.0.0.0',
-            fallback: 'index.html',
-            livereload: {
-                enable: true,
-                port: 8001
+gulp.task('webserver', ['auto-ts'], function() {
+    var config;
+    try {
+        config = require('./proxyConfig');
+    } catch (e) {
+        config = {
+            "proxy": {
+                "host": "http://test.winbaoxian.com/"
             },
-            directoryListing: true,
-            port: 1314
-        }));
+            "host": {
+                "port": 3000,
+                "host": "127.0.0.1"
+            }
+        };
+    }
+    var proxy_middleware = proxy(['/insure/**', '/user/**', '/static/**', '/view/**'], {
+        target: config.proxy.host,
+        changeOrigin: true
+    });
+    browserSync.init({
+        middleware: [proxy_middleware],
+        port: config.host.port,
+        server: {
+            baseDir: './src/front/'
+        },
+        index: './index.html',
+        files: './src/**/*.*'
+    });
 });
 
 gulp.task('test', ['ts'], function() {
