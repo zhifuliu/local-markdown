@@ -18,38 +18,19 @@ var gulp = require('gulp'),
     webServer = require('gulp-webserver');
 
 // WebServer
-// gulp.task('webserver', ['auto-ts'], function() {
-//     var config;
-//     try {
-//         config = require('./proxyConfig');
-//     } catch (e) {
-//         config = {
-//             "proxy": {
-//                 "host": "http://test.winbaoxian.com/"
-//             },
-//             "host": {
-//                 "port": 3000,
-//                 "host": "127.0.0.1"
-//             }
-//         };
-//     }
-//     var proxy_middleware = proxy(['/insure/**', '/user/**', '/static/**', '/view/**'], {
-//         target: config.proxy.host,
-//         changeOrigin: true
-//     });
-//     browserSync.init({
-//         middleware: [proxy_middleware],
-//         port: config.host.port,
-//         server: {
-//             baseDir: './src/front/'
-//         },
-//         index: './index.html',
-//         files: './src/**/*.*'
-//     });
-// });
-
-// WebServer
 gulp.task('web-server', ['auto-ts'], function() {
+    var config;
+    try {
+        config = require('./proxyConfig');
+        gutil.log('load configuration file');
+    } catch(e) {
+        config = {
+            "server": "http://127.0.0.1:3000",
+            "port": 1314
+        };
+        gutil.log('using default configuration: ', config);
+    }
+
     gulp.src('./src/front/')
         .pipe(webServer({
             host: '0.0.0.0',
@@ -59,7 +40,13 @@ gulp.task('web-server', ['auto-ts'], function() {
                 port: 8001
             },
             directoryListing: true,
-            port: 1314
+            port: config.port,
+            proxies: [
+                {
+                    source: '/collect',
+                    target: config.server
+                }
+            ]
         }));
 });
 
