@@ -1,47 +1,48 @@
 {
-    "name": "local-markdown",
-    "version": "1.0.0",
-    "description": "本地启动 web 项目，在 web 页面可以添加条目，后端(nodejs写的)会读条目配置，然后在前端生成目录树，在页面上就可以编辑md文件，并可以保存，保存的时候，后端会更新相应的本地文件，页面上是一个 bootstrap markdown 的编辑器",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/zhifuliu/local-markdown.git"
-    },
-    "keywords": [
-        "markdown",
-        "md",
-        "local"
-    ],
-    "author": "zhifu",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/zhifuliu/local-markdown/issues"
-    },
-    "homepage": "https://github.com/zhifuliu/local-markdown#readme",
-    "devDependencies": {
-        "browser-sync": "^2.17.5",
-        "chalk": "~0.4.0",
-        "deeply": "~0.1.0",
-        "event-stream": "~3.1.0",
-        "gulp": "^3.6.2",
-        "gulp-clean": "~0.2.4",
-        "gulp-concat": "~2.2.0",
-        "gulp-html-replace": "~1.0.0",
-        "gulp-replace": "~0.2.0",
-        "gulp-requirejs-bundler": "^0.1.1",
-        "gulp-tsc": "^0.10.0",
-        "gulp-uglify": "~0.2.1",
-        "gulp-util": "^3.0.5",
-        "http-proxy-middleware": "^0.17.2",
-        "karma": "^0.12.15",
-        "karma-chrome-launcher": "^0.1.3",
-        "karma-jasmine": "^0.1.5",
-        "karma-requireglobal-preprocessor": "0.0.0",
-        "karma-requirejs": "^0.2.1",
-        "q": "1.0.1",
-        "requirejs": "^2.1.11"
-    }
+  "name": "local-markdown",
+  "version": "1.0.0",
+  "description": "本地启动 web 项目，在 web 页面可以添加条目，后端(nodejs写的)会读条目配置，然后在前端生成目录树，在页面上就可以编辑md文件，并可以保存，保存的时候，后端会更新相应的本地文件，页面上是一个 bootstrap markdown 的编辑器",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhifuliu/local-markdown.git"
+  },
+  "keywords": [
+    "markdown",
+    "md",
+    "local"
+  ],
+  "author": "zhifu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhifuliu/local-markdown/issues"
+  },
+  "homepage": "https://github.com/zhifuliu/local-markdown#readme",
+  "devDependencies": {
+    "browser-sync": "^2.17.5",
+    "chalk": "~0.4.0",
+    "deeply": "~0.1.0",
+    "event-stream": "~3.1.0",
+    "gulp": "^3.6.2",
+    "gulp-clean": "~0.2.4",
+    "gulp-concat": "~2.2.0",
+    "gulp-html-replace": "~1.0.0",
+    "gulp-replace": "~0.2.0",
+    "gulp-requirejs-bundler": "^0.1.1",
+    "gulp-tsc": "^0.10.0",
+    "gulp-uglify": "~0.2.1",
+    "gulp-util": "^3.0.5",
+    "gulp-webserver": "^0.9.1",
+    "http-proxy-middleware": "^0.17.2",
+    "karma": "^0.12.15",
+    "karma-chrome-launcher": "^0.1.3",
+    "karma-jasmine": "^0.1.5",
+    "karma-requireglobal-preprocessor": "0.0.0",
+    "karma-requirejs": "^0.2.1",
+    "q": "1.0.1",
+    "requirejs": "^2.1.11"
+  }
 }
