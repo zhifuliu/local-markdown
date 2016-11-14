@@ -24,7 +24,7 @@ app.use(
     session({
         secret: 'locale_markdown_write', // 建议使用 128 个字符的随机字符串。用于计算 hash 值并存放在 cookies 中
         cookie: {
-            maxAge: 2 * 60 * 1000
+            maxAge: 20 * 60 * 1000
         },
         resave: true,
         saveUninitialized: false
@@ -44,7 +44,7 @@ app.all('*', function(req, res, next) {
 });
 //api
 app.use('/api/login', paramsFilter, require('./public/api/login'));
-// app.use('/api/login', loginFilter, require('./public/api/login'));
+app.use('/api/logout', loginFilter, require('./public/api/logout'));
 
 
 /// catch 404 and forward to error handler
