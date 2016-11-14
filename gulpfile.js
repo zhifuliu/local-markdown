@@ -18,7 +18,7 @@ var gulp = require('gulp'),
     webServer = require('gulp-webserver');
 
 // WebServer
-gulp.task('web-server', ['auto-ts'], function() {
+gulp.task('webserver', ['auto-ts'], function() {
     var config;
     try {
         config = require('./proxyConfig');
