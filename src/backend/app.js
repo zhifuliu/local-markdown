@@ -14,7 +14,7 @@ app.use(bodyParser.json()); // 为了能获取到参数
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(express.static('./test/'));
+// app.use(express.static('./test/'));
 app.use(cookieParser('', {
     maxAge: 2 * 60 * 1000
 }));
@@ -29,7 +29,7 @@ app.use(
         saveUninitialized: false
     })
 );
-app.use(express.static(path.join(__dirname, 'test')));
+// app.use(express.static(path.join(__dirname, 'test')));
 
 //api
 app.use('/api/login', require('./public/api/login'));
