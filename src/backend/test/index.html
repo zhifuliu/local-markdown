@@ -9,12 +9,18 @@
                 margin: 20px 10%;
                 background: #F0EFF4;
                 border-radius: 15px;
+                padding: 20px;
             }
         </style>
     </head>
     <body>
         <div class="testDiv">
-            
+            <form action="api/login" method="post">
+                <span>login:</span>
+                user:<input type="text" name="user"><br>
+                pass:<input type="password" name="pass"><br>
+                <input type="submit">
+            </form>
         </div>
     </body>
 </html>
