@@ -143,7 +143,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('clean', function() {
-    var distContents = gulp.src('./dist/**/*', {
+    var distContents = gulp.src(['./dist/**/*', './**/.DS_Store'], {
             read: false
         }),
         generatedJs = gulp.src(['./src/front/**/*.js', './src/front/**/*.js.map', 'test/**/*.js', 'test/**/*.js.map'], {
