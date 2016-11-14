@@ -19,6 +19,7 @@ var gulp = require('gulp'),
     nodemon = require('gulp-nodemon'),
     livereload = require('gulp-livereload');
 
+gulp.task('web', ['develop', 'webserver']);
 gulp.task('develop', function() {
     livereload.listen();
     nodemon({
@@ -44,8 +45,8 @@ gulp.task('webserver', ['auto-ts'], function() {
         gutil.log('load configuration file');
     } catch(e) {
         config = {
-            "server": "http://127.0.0.1:3000",
-            "port": 1314
+            "server": "http://127.0.0.1:8888",
+            "port": 8889
         };
         gutil.log('using default configuration: ', config);
     }
@@ -56,7 +57,7 @@ gulp.task('webserver', ['auto-ts'], function() {
             fallback: 'index.html',
             livereload: {
                 enable: true,
-                port: 8001
+                port: 8900
             },
             directoryListing: true,
             port: config.port,
