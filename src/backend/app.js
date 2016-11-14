@@ -6,6 +6,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var loginFilter = require('./public/filter/loginFilter');
+var paramsFilter = require('./public/filter/paramsFilter');
 
 var app = express();
 
@@ -42,7 +43,7 @@ app.all('*', function(req, res, next) {
     }
 });
 //api
-app.use('/api/login', require('./public/api/login'));
+app.use('/api/login', paramsFilter, require('./public/api/login'));
 // app.use('/api/login', loginFilter, require('./public/api/login'));
 
 
