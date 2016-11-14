@@ -5,22 +5,20 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/user');
 var loginFilter = require('./public/filter/loginFilter');
 
 var app = express();
 
 // view engine setup,use jade engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(bodyParser.json()); // 为了能获取到参数
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.use(express.static('./public/pages'));
+// app.use(express.static('./public/pages'));
 app.use(cookieParser('', {
     maxAge: 2 * 60 * 1000
 }));
@@ -49,23 +47,8 @@ app.all('*', function(req, res, next) {
     }
 });
 //api
-app.use('/api/login', require('./public/api/login'));
-app.use('/api/logout', require('./public/api/logout'));
-app.use('/api/haveRegister', require('./public/api/haveRegister'));
-app.use('/api/changeMsg', loginFilter, require('./public/api/changeMsg'));
-app.use('/api/register', require('./public/api/register'));
-app.use('/api/add', loginFilter, require('./public/api/addCollect'));
-app.use('/api/addParam', require('./public/api/addCollectParam'));
-app.use('/api/get', loginFilter, require('./public/api/getCollects'));
-app.use('/api/edit', loginFilter, require('./public/api/changeCollect'));
-app.use('/api/getUserMsg', loginFilter, require('./public/api/getUserMsg'));
-app.use('/api/getUserMsgParam', require('./public/api/getUserMsgParam'));
-app.use('/api/delete', loginFilter, require('./public/api/deleteCollect'));
+app.use('/api/login', loginFilter, require('./public/api/login'));
 
-// component
-app.use('/', loginFilter, routes);
-app.use('/users', users);
-app.use('/db', require('./routes/db'));
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
