@@ -15,7 +15,26 @@ var gulp = require('gulp'),
     htmlreplace = require('gulp-html-replace'),
     typescript = require('gulp-tsc'),
     gutil = require('gulp-util'),
-    webServer = require('gulp-webserver');
+    webServer = require('gulp-webserver'),
+    nodemon = require('gulp-nodemon'),
+    livereload = require('gulp-livereload');
+
+gulp.task('develop', function() {
+    livereload.listen();
+    nodemon({
+        script: './src/backend/bin/www',
+        ext: 'js jade coffee',
+        stdout: false
+    }).on('readable', function() {
+        this.stdout.on('data', function(chunk) {
+            if (/^Express server listening on port/.test(chunk)) {
+                livereload.changed(__dirname);
+            }
+        });
+        this.stdout.pipe(process.stdout);
+        this.stderr.pipe(process.stderr);
+    });
+});
 
 // WebServer
 gulp.task('webserver', ['auto-ts'], function() {
