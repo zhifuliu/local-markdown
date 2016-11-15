@@ -37,9 +37,26 @@ function login (userId, pass) {
     return result;
 }
 
+function register(userId, pass, nickname) {
+    var result = {};
+    if (haveUser(userId)) {
+        result = {
+            errCode: -1,
+            errMsg: '用户已存在'
+        }
+    } else {
+        result = {
+            errCode: 1,
+            errMsg: 'register success'
+        }
+    }
+    return result;
+}
+
 function getUserMsg(userId) {
 
 }
 
 exports.getUserMsg = getUserMsg;
 exports.login = login;
+exports.register = register;
