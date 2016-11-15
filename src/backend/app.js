@@ -43,7 +43,7 @@ app.all('*', function(req, res, next) {
     }
 });
 //api
-app.use('/api/login', paramsFilter, require('./public/api/login'));
+app.use('/api/login', require('./public/api/login'));
 app.use('/api/logout', loginFilter, require('./public/api/logout'));
 
 
