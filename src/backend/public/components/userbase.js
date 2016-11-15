@@ -68,3 +68,4 @@ function getUserMsg(userId) {
 exports.getUserMsg = getUserMsg;
 exports.login = login;
 exports.register = register;
+exports.getUserMsg = getUserMsg;
