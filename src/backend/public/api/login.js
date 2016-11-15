@@ -10,9 +10,6 @@ router.post('/', function(req, res) {
             req.session.userMsg = {};
             req.session.userMsg.user = result.data.id;
             req.session.userMsg.nickname = result.data.nickname;
-            var encrypter = new(require('encrypter'))(result.data.id);
-            var cookieValue = encrypter.encrypt(result.data.id);
-            res.cookie('userMsg', cookieValue);
             res.send(result);
         } else {
             res.send(result);
