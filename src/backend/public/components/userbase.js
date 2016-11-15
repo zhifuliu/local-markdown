@@ -4,12 +4,12 @@ var users = require('../../user.json').users;
 function haveUser(userId) {
     return _.find(users, function(user) {
         return user.id == userId;
-    }) != undefined;
+    });
 }
 
 function login (userId, pass) {
     var result = {};
-    if (haveUser(userId)) {
+    if (haveUser(userId) != undefined) {
         var temp = _.find(users, function(user) {
            return user.id == userId && user.pass == pass;
        });
@@ -39,7 +39,7 @@ function login (userId, pass) {
 
 function register(userId, pass, nickname) {
     var result = {};
-    if (haveUser(userId)) {
+    if (haveUser(userId) != undefined) {
         result = {
             errCode: -1,
             errMsg: '用户已存在'
@@ -54,7 +54,15 @@ function register(userId, pass, nickname) {
 }
 
 function getUserMsg(userId) {
-
+    var userMsg = haveUser(userId);
+    if (userMsg != undefined) {
+        return {
+            errCode: -1,
+            errMsg: '用户已存在'
+        }
+    } else {
+        return userMsg;
+    }
 }
 
 exports.getUserMsg = getUserMsg;
