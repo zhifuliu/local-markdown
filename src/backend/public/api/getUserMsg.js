@@ -5,7 +5,7 @@ var userBase = require('../components/userBase');
 
 router.post('/', function(req, res) {
     res.send({
-        errCode: 0,
+        errCode: 1,
         errMsg: 'success',
         data: req.session.userMsg
     });
