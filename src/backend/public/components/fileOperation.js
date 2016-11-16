@@ -16,14 +16,14 @@ function writeJsonFile(filepath, data) {
         .on('event', function(msg) {
             console.log(msg);
         });
-        ws.once('open', function(feedback) {
-            try {
-                ws.write(new Buffer(data, 'utf-8'));
-                ws.end();
-            } catch(error) {
-                console.log(error);
-            }
-        });
+    ws.once('open', function(feedback) {
+        try {
+            ws.write(new Buffer(data, 'utf-8'));
+            ws.end();
+        } catch(error) {
+            console.log(error);
+        }
+    });
 }
 function writeJsonFileBackup(filepath, data) {
     fs.writeFile(filepath, data, function(err) {
