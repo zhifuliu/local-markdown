@@ -1,8 +1,8 @@
 var _ = require('underscore');
-var list = require('../../posts.json').list;
+var list = require('../../projectList.json').list;
 
-function getPostList() {
+function getProjectList() {
     return list;
 }
 
-exports.getPostList = getPostList;
+exports.getProjectList = getProjectList;

@@ -49,6 +49,8 @@ app.use('/api/logout', loginFilter, require('./public/api/logout'));
 // app.use('/api/register', require('./public/api/register'));
 app.use('/api/getUserMsg', loginFilter, require('./public/api/getUserMsg'));
 
+app.use('/api/getProjectList', loginFilter, require('./public/api/getProjectList'));
+
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
