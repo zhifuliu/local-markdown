@@ -51,6 +51,7 @@ app.use('/api/getUserMsg', loginFilter, require('./public/api/getUserMsg'));
 
 app.use('/api/getProjectList', loginFilter, require('./public/api/getProjectList'));
 app.use('/api/addProject', loginFilter, require('./public/api/addProject'));
+app.use('/api/deleteProject', loginFilter, require('./public/api/deleteProject'));
 
 
 /// catch 404 and forward to error handler

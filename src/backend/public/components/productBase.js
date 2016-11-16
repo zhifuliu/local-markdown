@@ -48,12 +48,30 @@ function addProject(name, url) {
         fileOperation.writeJsonFile('./src/backend/projectList.json', JSON.stringify({list: list}));
         return {
             errCode: 1,
-            errMsg: 'success'
+            errMsg: 'add project success'
         }
     } else {
         return result;
     }
 }
+function deleteProject(name, url) {
+    var result = {};
+    result = haveProject(name, url);
+    if (result.errCode != -1) {
+        return {
+            errCode: -1,
+            errMsg: 'project not exist'
+        }
+    } else {
+        list = _.filter(list, function(item) {return item.name != name && item.url != url;});
+        fileOperation.writeJsonFile('./src/backend/projectList.json', JSON.stringify({list: list}));
+        return {
+            errCode: 1,
+            errMsg: 'delete project success'
+        };
+    }
+}
 
 exports.getProjectList = getProjectList;
 exports.addProject = addProject;
+exports.deleteProject = deleteProject;
