@@ -20,11 +20,12 @@ function writeJsonFile(filepath, data) {
         try {
             ws.write(new Buffer(data, 'utf-8'));
             ws.end();
-        } catch(error) {
+        } catch (error) {
             console.log(error);
         }
     });
 }
+
 function writeJsonFileBackup(filepath, data) {
     fs.writeFile(filepath, data, function(err) {
         if (err) {
@@ -36,4 +37,33 @@ function writeJsonFileBackup(filepath, data) {
     });
 }
 
+function walk(baseUrl, path, subDir) {
+    console.log(baseUrl);
+    console.log(path);
+    console.log(subDir);
+    console.log(baseUrl + (path.length != 0 ? (path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + (path.length != 0 && subDir.length != 0 ? '/' : ''));
+    console.log('-----------------------------------')
+    var fileList = [];
+    var dirList = fs.readdirSync(baseUrl + (path.length != 0 ? ('/'+path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + (path.length != 0 && subDir.length != 0 ? '/' : ''));
+    // console.log(dirList);
+    dirList.forEach(function(item) {
+        if (fs.statSync(baseUrl + (path.length != 0 ? ('/'+path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + '/' + item).isDirectory()) {
+            fileList.push({
+                path: (path.length != 0 ? (path + '/') : path) + item,
+                children: walk(baseUrl, (path.length != 0 ? (path + '/') : path) + subDir, item)
+            });
+        } else {
+            fileList.push({
+                path: path,
+                file: item
+            });
+        }
+    });
+    return fileList;
+}
+function traverseDir(path) {
+    writeJsonFile('./src/backend/public/data/test.json', JSON.stringify(walk(path, '', '')));
+}
+
 exports.writeJsonFile = writeJsonFile;
+exports.traverseDir = traverseDir;

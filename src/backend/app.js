@@ -53,6 +53,8 @@ app.use('/api/getProjectList', loginFilter, require('./public/api/getProjectList
 app.use('/api/addProject', loginFilter, require('./public/api/addProject'));
 app.use('/api/deleteProject', loginFilter, require('./public/api/deleteProject'));
 
+app.use('/api/refreshProject', loginFilter, require('./public/api/refreshProject'));
+
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
