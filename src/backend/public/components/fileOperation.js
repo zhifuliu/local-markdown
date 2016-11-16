@@ -38,14 +38,8 @@ function writeJsonFileBackup(filepath, data) {
 }
 
 function walk(baseUrl, path, subDir) {
-    console.log(baseUrl);
-    console.log(path);
-    console.log(subDir);
-    console.log(baseUrl + (path.length != 0 ? (path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + (path.length != 0 && subDir.length != 0 ? '/' : ''));
-    console.log('-----------------------------------')
     var fileList = [];
     var dirList = fs.readdirSync(baseUrl + (path.length != 0 ? ('/'+path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + (path.length != 0 && subDir.length != 0 ? '/' : ''));
-    // console.log(dirList);
     dirList.forEach(function(item) {
         if (fs.statSync(baseUrl + (path.length != 0 ? ('/'+path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + '/' + item).isDirectory()) {
             fileList.push({

@@ -46,7 +46,6 @@ app.all('*', function(req, res, next) {
 //api
 app.use('/api/login', require('./public/api/login'));
 app.use('/api/logout', loginFilter, require('./public/api/logout'));
-// app.use('/api/register', require('./public/api/register'));
 app.use('/api/getUserMsg', loginFilter, require('./public/api/getUserMsg'));
 
 app.use('/api/getProjectList', loginFilter, require('./public/api/getProjectList'));
