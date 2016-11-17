@@ -45,7 +45,7 @@ function walk(baseUrl, path, subDir) {
             var children = walk(baseUrl, (path.length != 0 ? (path + '/') : path) + subDir, item);
             if (children.length != 0) {
                 fileList.push({
-                    path: (path.length != 0 ? (path + '/') : path) + item,
+                    path: (path.length != 0 ? (path + '/') : '') + (subDir.length != 0 ? (subDir + '/') : '') + item,
                     children: children
                 });
             }
@@ -53,7 +53,7 @@ function walk(baseUrl, path, subDir) {
             var markdownSuffix = ['.md', '.markdown'];
             if (markdownSuffix.indexOf(pathComponents.extname(item)) != -1) {
                 fileList.push({
-                    path: path,
+                    path: path + '/' + subDir,
                     file: item
                 });
             }
