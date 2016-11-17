@@ -55,6 +55,7 @@ app.use('/api/deleteProject', loginFilter, require('./public/api/deleteProject')
 app.use('/api/refreshProject', loginFilter, require('./public/api/refreshProject'));
 app.use('/api/getProjectData', loginFilter, require('./public/api/getProjectData'));
 app.use('/api/getMdData', loginFilter, require('./public/api/getMdData'));
+app.use('/api/changeMdData', loginFilter, require('./public/api/changeMdData'));
 
 
 /// catch 404 and forward to error handler

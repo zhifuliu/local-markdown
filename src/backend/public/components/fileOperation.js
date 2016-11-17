@@ -25,7 +25,27 @@ function writeJsonFile(filepath, data) {
         }
     });
 }
-
+function writeFile(filepath, data) {
+    console.log('2');
+    // var ws = fs.createWriteStream(filepath);
+    // ws.once('open', function(feedback) {
+    //     try {
+    //         ws.write(new Buffer(data, 'utf-8'));
+    //         ws.end();
+    //         console.log('3');
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // });
+    fs.writeFileSync(filepath, data, 'utf-8', function (err, data) {
+        console.log('3');
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(data);
+        }
+    });
+}
 function writeJsonFileBackup(filepath, data) {
     fs.writeFile(filepath, data, function(err) {
         if (err) {
@@ -67,3 +87,4 @@ function traverseDir(path, name) {
 
 exports.writeJsonFile = writeJsonFile;
 exports.traverseDir = traverseDir;
+exports.writeFile = writeFile;
