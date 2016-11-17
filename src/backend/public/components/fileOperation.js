@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    path = require('path');
+    pathComponents = require('path');
 
 function writeJsonFile(filepath, data) {
     var ws = fs.createWriteStream(filepath);
@@ -42,15 +42,21 @@ function walk(baseUrl, path, subDir) {
     var dirList = fs.readdirSync(baseUrl + (path.length != 0 ? ('/'+path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + (path.length != 0 && subDir.length != 0 ? '/' : ''));
     dirList.forEach(function(item) {
         if (fs.statSync(baseUrl + (path.length != 0 ? ('/'+path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + '/' + item).isDirectory()) {
-            fileList.push({
-                path: (path.length != 0 ? (path + '/') : path) + item,
-                children: walk(baseUrl, (path.length != 0 ? (path + '/') : path) + subDir, item)
-            });
+            var children = walk(baseUrl, (path.length != 0 ? (path + '/') : path) + subDir, item);
+            if (children.length != 0) {
+                fileList.push({
+                    path: (path.length != 0 ? (path + '/') : path) + item,
+                    children: children
+                });
+            }
         } else {
-            fileList.push({
-                path: path,
-                file: item
-            });
+            var markdownSuffix = ['.md', '.markdown'];
+            if (markdownSuffix.indexOf(pathComponents.extname(item)) != -1) {
+                fileList.push({
+                    path: path,
+                    file: item
+                });
+            }
         }
     });
     return fileList;
