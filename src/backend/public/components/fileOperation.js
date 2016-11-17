@@ -53,7 +53,7 @@ function walk(baseUrl, path, subDir) {
             var markdownSuffix = ['.md', '.markdown'];
             if (markdownSuffix.indexOf(pathComponents.extname(item)) != -1) {
                 fileList.push({
-                    path: path + '/' + subDir,
+                    path: (path.length != 0 ? (path + '/') : '') + (subDir.length != 0 ? (subDir + '/') : ''),
                     file: item
                 });
             }
