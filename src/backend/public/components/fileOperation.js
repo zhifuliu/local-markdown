@@ -61,8 +61,8 @@ function walk(baseUrl, path, subDir) {
     });
     return fileList;
 }
-function traverseDir(path) {
-    writeJsonFile('./src/backend/public/data/test.json', JSON.stringify(walk(path, '', '')));
+function traverseDir(path, name) {
+    writeJsonFile('./src/backend/public/data/' + name + '.json', JSON.stringify(walk(path, '', '')));
 }
 
 exports.writeJsonFile = writeJsonFile;

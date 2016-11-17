@@ -8,7 +8,7 @@ var fileOperation = require('../components/fileOperation');
 router.post('/', function(req, res) {
     if (!_.isUndefined(req.body.name) && !_.isUndefined(req.body.url)) {
         try {
-            fileOperation.traverseDir(req.body.url);
+            fileOperation.traverseDir(req.body.url, req.body.name);
             res.send({
                 errCode: 1,
                 errMsg: 'success'
