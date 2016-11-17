@@ -10,6 +10,14 @@ router.post('/', function(req, res) {
     req.body.mdPath = req.body.mdPath != undefined ? req.body.mdPath : '';
     if (!_.isUndefined(req.body.projectName) && !_.isUndefined(req.body.projectUrl) && !_.isUndefined(req.body.mdFileName)) {
         try {
+            // require('simple-git')(req.body.projectUrl)
+            //     .log(function(err, log) {
+            //         if (err) {
+            //             console.log(err);
+            //         } else {
+            //             console.log(log);
+            //         }
+            //     });
             res.send({
                 errCode: 1,
                 errMsg: 'success',
