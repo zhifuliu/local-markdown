@@ -15,6 +15,9 @@ router.post('/', function(req, res) {
         try {
             // fileOperation.writeFile(req.body.projectUrl + '/' + (req.body.mdPath.length == 0 ? '' : (req.body.mdPath + '/')) + req.body.mdFileName, req.body.newData);
             fs.writeFileSync(req.body.projectUrl + '/' + (req.body.mdPath.length == 0 ? '' : (req.body.mdPath + '/')) + req.body.mdFileName, req.body.newData, 'utf-8', function(err, data) {});
+            require('simple-git')(req.body.projectUrl)
+                .add(req.body.projectUrl + '/' + (req.body.mdPath.length == 0 ? '' : (req.body.mdPath + '/')) + req.body.mdFileName)
+                .commit(req.body.commitRemark);
             res.send({
                 errCode: 1,
                 errMsg: 'success'
