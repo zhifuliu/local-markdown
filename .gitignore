@@ -19,3 +19,5 @@ test/**/*.js.map
 !src/front/app/require.config.js
 !src/front/app/lib/*.js*
 !tset/require.config.js
+
+src/backend/public/data/*.json
