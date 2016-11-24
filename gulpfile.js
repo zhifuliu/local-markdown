@@ -13,7 +13,7 @@ var gulp = require('gulp'),
     replace = require('gulp-replace'),
     uglify = require('gulp-uglify'),
     htmlreplace = require('gulp-html-replace'),
-    typescript = require('gulp-tsc'),
+    typescript = require('gulp-typescript'),
     gutil = require('gulp-util'),
     webServer = require('gulp-webserver'),
     nodemon = require('gulp-nodemon'),
@@ -170,7 +170,7 @@ gulp.task('clean', function() {
     var distContents = gulp.src(['./dist/**/*', './**/.DS_Store'], {
             read: false
         }),
-        generatedJs = gulp.src(['./src/front/**/*.js', './src/front/**/*.js.map', 'test/**/*.js', 'test/**/*.js.map'], {
+        generatedJs = gulp.src(['./src/front/**/*.js', './src/front/**/*.js.map'], {
             read: false
         })
         .pipe(es.mapSync(function(data) {

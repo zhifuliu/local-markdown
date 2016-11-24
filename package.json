@@ -53,6 +53,7 @@
     "requirejs": "^2.1.11",
     "serve-favicon": "^2.3.0",
     "simple-git": "^1.62.0",
+    "typescript": "^2.0.10",
     "underscore": "^1.8.3"
   }
 }
