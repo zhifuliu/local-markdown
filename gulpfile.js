@@ -21,10 +21,10 @@ var gulp = require('gulp'),
 
 gulp.task('web', ['develop', 'webserver']);
 gulp.task('develop', function() {
-    livereload.listen();
+    // livereload.listen();
     nodemon({
         script: './src/backend/bin/www',
-        ext: 'js jade coffee',
+        ext: 'js',
         stdout: false
     }).on('readable', function() {
         this.stdout.on('data', function(chunk) {
@@ -62,7 +62,7 @@ gulp.task('webserver', ['auto-ts'], function() {
             directoryListing: true,
             port: config.port,
             proxies: [{
-                source: '/collect',
+                source: '/api',
                 target: config.server
             }]
         }));

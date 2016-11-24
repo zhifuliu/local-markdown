@@ -6,11 +6,12 @@ import _ = require('underscore');
 var prefix = '/api';
 
 class Service {
-    getUserMsg(): Q.Promise<models.returnMsg> {
+    login(qd: any): Q.Promise<models.returnMsg> {
         return Q($.ajax({
-            url: prefix + 'getUserMsg',
+            url: prefix + '/login',
             type: 'post',
-            contentType: 'application/json'
+            contentType: 'application/json',
+            data: JSON.stringify(qd)
         }));
     }
 }
