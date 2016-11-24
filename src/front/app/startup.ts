@@ -14,16 +14,16 @@ class App {
     public route = router.currentRoute;
 }
 
-services.login({
-    user: 1203228,
-    pass: 000000
-})
-    .then(function(data) {
-        console.log(data);
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
+// services.login({
+//     user: 1203228,
+//     pass: 000000
+// })
+//     .then(function(data) {
+//         console.log(data);
+//     })
+//     .catch(function(error) {
+//         console.log(error);
+//     });
 
 var app = new App();
 ko.applyBindings(app);
