@@ -1,37 +1,37 @@
 {
-  "name": "local-markdown",
-  "description": "本地启动 web 项目，在 web 页面可以添加条目，后端(nodejs写的)会读条目配置，然后在前端生成目录树，在页面上就可以编辑md文件，并可以保存，保存的时候，后端会更新相应的本地文件，页面上是一个 bootstrap markdown 的编辑器",
-  "main": "index.js",
-  "authors": [
-    "zhifu"
-  ],
-  "license": "ISC",
-  "keywords": [
-    "markdown",
-    "md",
-    "local"
-  ],
-  "homepage": "https://github.com/zhifuliu/local-markdown",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "components-bootstrap": "~3.1.1",
-    "crossroads": "~0.12.0",
-    "hasher": "~1.2.0",
-    "requirejs": "~2.1.11",
-    "requirejs-text": "~2.0.10",
-    "knockout": "~3.3.0-alpha",
-    "knockout-projections": "~1.1.0"
-  },
-  "resolutions": {
-    "knockout": "~3.3.0-alpha"
-  },
-  "devDependencies": {
-    "knockout-postbox": "^0.5.2"
-  }
+    "name": "local-markdown",
+    "description": "本地启动 web 项目，在 web 页面可以添加条目，后端(nodejs写的)会读条目配置，然后在前端生成目录树，在页面上就可以编辑md文件，并可以保存，保存的时候，后端会更新相应的本地文件，页面上是一个 bootstrap markdown 的编辑器",
+    "main": "index.js",
+    "authors": [
+        "zhifu"
+    ],
+    "license": "ISC",
+    "keywords": [
+        "markdown",
+        "md",
+        "local"
+    ],
+    "homepage": "https://github.com/zhifuliu/local-markdown",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "components-bootstrap": "~3.1.1",
+        "crossroads": "~0.12.0",
+        "hasher": "~1.2.0",
+        "requirejs": "~2.1.11",
+        "requirejs-text": "~2.0.10",
+        "knockout": "~3.3.0-alpha",
+        "knockout-projections": "~1.1.0"
+    },
+    "resolutions": {
+        "knockout": "~3.3.0-alpha"
+    },
+    "devDependencies": {
+        "knockout-postbox": "^0.5.2"
+    }
 }

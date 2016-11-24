@@ -43,7 +43,7 @@ gulp.task('webserver', ['auto-ts'], function() {
     try {
         config = require('./proxyConfig');
         gutil.log('load configuration file');
-    } catch(e) {
+    } catch (e) {
         config = {
             "server": "http://127.0.0.1:8888",
             "port": 8889
@@ -61,12 +61,10 @@ gulp.task('webserver', ['auto-ts'], function() {
             },
             directoryListing: true,
             port: config.port,
-            proxies: [
-                {
-                    source: '/collect',
-                    target: config.server
-                }
-            ]
+            proxies: [{
+                source: '/collect',
+                target: config.server
+            }]
         }));
 });
 
