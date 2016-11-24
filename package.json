@@ -43,6 +43,7 @@
     "gulp-uglify": "~0.2.1",
     "gulp-util": "^3.0.5",
     "gulp-webserver": "^0.9.1",
+    "http-proxy-middleware": "^0.17.2",
     "jade": "^1.11.0",
     "moment": "^2.11.2",
     "mongodb": "^2.1.7",
