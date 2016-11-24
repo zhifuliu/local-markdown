@@ -94,10 +94,12 @@ gulp.task('auto-ts', ['ts'], function() {
     gulp.watch('**/*.ts', function() {
         gulp.src(['**/*.ts'])
             .pipe(typescript({
-                module: 'amd',
-                sourcemap: true,
-                outDir: './',
-                target: 'es5'
+                module: "amd",
+                sourceMap: true,
+                outDir: "./",
+                target: "es5",
+                moduleResolution: "classic",
+                allowJs: false
             }))
             .on('error', gutil.log)
             .pipe(gulp.dest('./'));
@@ -125,10 +127,12 @@ requireJsOptimizerConfig = merge(requireJsRuntimeConfig, {
 gulp.task('ts', function() {
     return gulp.src(['**/*.ts'])
         .pipe(typescript({
-            module: 'amd',
-            sourcemap: true,
-            outDir: './',
-            target: 'es5'
+            module: "amd",
+            sourceMap: true,
+            outDir: "./",
+            target: "es5",
+            moduleResolution: "classic",
+            allowJs: false
         }))
         .pipe(gulp.dest('./'));
 });

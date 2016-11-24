@@ -4,6 +4,7 @@
         "sourceMap": true,
         "outDir": "./",
         "target": "es5",
-        "moduleResolution": "classic"
+        "moduleResolution": "classic",
+        "allowJs": false
     }
 }
