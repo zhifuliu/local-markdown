@@ -1,5 +1,9 @@
 {
     "compilerOptions": {
-        "target": "ES6"
+        "module": "amd",
+        "sourceMap": true,
+        "outDir": "./",
+        "target": "es5",
+        "moduleResolution": "classic"
     }
 }
