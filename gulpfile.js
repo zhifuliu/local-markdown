@@ -17,9 +17,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     webServer = require('gulp-webserver'),
     nodemon = require('gulp-nodemon'),
-    livereload = require('gulp-livereload'),
-    browserSync = require('browser-sync').create(),
-    proxy = require('http-proxy-middleware');
+    livereload = require('gulp-livereload');
 
 gulp.task('backend', function() {
     livereload.listen();
@@ -60,34 +58,21 @@ gulp.task('webserver', ['auto-ts'], function() {
         gutil.log('using default configuration: ', config);
     }
 
-    // gulp.src('./src/front/')
-    //     .pipe(webServer({
-    //         host: '0.0.0.0',
-    //         fallback: 'index.html',
-    //         livereload: {
-    //             enable: true,
-    //             port: 8900
-    //         },
-    //         directoryListing: true,
-    //         port: config.port,
-    //         proxies: [{
-    //             source: '/api',
-    //             target: config.server
-    //         }]
-    //     }));
-    var proxy_middleware = proxy(['/api/**'], {
-        target: config.server,
-        changeOrigin: true
-    });
-    browserSync.init({
-        middleware: [proxy_middleware],
-        port: config.port,
-        server: {
-            baseDir: './src/front'
-        },
-        index: './index.html',
-        files: ['./src/front/*.ts', './src/front/*.html']
-    });
+    gulp.src('./src/front/')
+        .pipe(webServer({
+            host: '0.0.0.0',
+            fallback: 'index.html',
+            livereload: {
+                enable: true,
+                port: 8900
+            },
+            directoryListing: true,
+            port: config.port,
+            proxies: [{
+                source: '/api',
+                target: config.server
+            }]
+        }));
 });
 
 gulp.task('auto-ts', ['ts'], function() {
