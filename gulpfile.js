@@ -19,9 +19,8 @@ var gulp = require('gulp'),
     nodemon = require('gulp-nodemon'),
     livereload = require('gulp-livereload');
 
-gulp.task('web', ['develop', 'webserver']);
-gulp.task('develop', function() {
-    // livereload.listen();
+gulp.task('backend', function() {
+    livereload.listen();
     nodemon({
         script: './src/backend/bin/www',
         ext: 'js',
@@ -39,6 +38,14 @@ gulp.task('develop', function() {
 
 // WebServer
 gulp.task('webserver', ['auto-ts'], function() {
+    // frontend service start
+    var app = require('./src/backend/app');
+    app.set('port', 8888);
+    var server = app.listen(app.get('port'), function() {
+      console.log('Express server listening on port ' + server.address().port);
+    });
+    // frontend service end
+
     var config;
     try {
         config = require('./proxyConfig');
