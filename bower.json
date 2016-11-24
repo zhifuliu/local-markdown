@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "knockout-postbox": "^0.5.2",
-    "q": "^2.0.2"
+    "q": "^2.0.2",
+    "underscore": "^1.8.3"
   }
 }
