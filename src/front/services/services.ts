@@ -3,7 +3,7 @@ import models = require('../app/models');
 import $ = require('jquery');
 import _ = require('underscore');
 
-var prefix = '/api';
+var prefix = '/api/api';
 
 class Service {
     login(qd: any): Q.Promise<models.returnMsg> {

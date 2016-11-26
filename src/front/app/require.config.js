@@ -1,6 +1,6 @@
 // require.js looks for the following global when initializing
 var require = {
-  baseUrl: ".",
+  baseUrl: "./front/",
   paths: {
     "bootstrap":            "bower_modules/components-bootstrap/js/bootstrap.min",
     "crossroads":           "bower_modules/crossroads/dist/crossroads.min",
