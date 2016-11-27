@@ -10,26 +10,26 @@ function haveProject(name, url) {
     var urlFilter = _.find(list, function(item) {
         return item.url == url;
     });
-    if (urlFilter != undefined && nameFilter != undefined) {
+    if (urlFilter !== undefined && nameFilter !== undefined) {
         result = {
             errCode: -1,
             errMsg: '项目已经存在'
-        }
-    } else if (urlFilter != undefined && nameFilter == undefined) {
+        };
+    } else if (urlFilter !== undefined && nameFilter === undefined) {
         result = {
             errCode: -1,
             errMsg: '项目url已经添加，项目名：' + urlFilter.name
-        }
-    } else if (urlFilter == undefined && nameFilter != undefined) {
+        };
+    } else if (urlFilter === undefined && nameFilter !== undefined) {
         result = {
             errCode: -1,
             errMsg: '项目 name 已经添加'
-        }
+        };
     } else {
         result = {
             errCode: 0,
             errMsg: '项目不存在'
-        }
+        };
     }
     return result;
 }
@@ -49,7 +49,7 @@ function addProject(name, url) {
         return {
             errCode: 1,
             errMsg: 'add project success'
-        }
+        };
     } else {
         return result;
     }
@@ -61,7 +61,7 @@ function deleteProject(name, url) {
         return {
             errCode: -1,
             errMsg: 'project not exist'
-        }
+        };
     } else {
         list = _.filter(list, function(item) {return item.name != name && item.url != url;});
         fileOperation.writeJsonFile('./src/backend/projectList.json', JSON.stringify({list: list}));

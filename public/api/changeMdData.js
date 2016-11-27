@@ -34,7 +34,6 @@ router.post('/', function(req, res) {
                 errMsg: 'success'
             });
         } catch (err) {
-            console.log(err);
             res.send({
                 errCode: -1,
                 errMsg: err

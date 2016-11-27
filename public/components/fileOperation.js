@@ -59,13 +59,13 @@ function writeJsonFileBackup(filepath, data) {
 
 function walk(baseUrl, path, subDir) {
     var fileList = [];
-    var dirList = fs.readdirSync(baseUrl + (path.length != 0 ? ('/'+path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + (path.length != 0 && subDir.length != 0 ? '/' : ''));
+    var dirList = fs.readdirSync(baseUrl + (path.length !== 0 ? ('/'+path) : '')  + (subDir.length !== 0 ? ('/'+subDir) : '') + (path.length !== 0 && subDir.length !== 0 ? '/' : ''));
     dirList.forEach(function(item) {
-        if (fs.statSync(baseUrl + (path.length != 0 ? ('/'+path) : '')  + (subDir.length != 0 ? ('/'+subDir) : '') + '/' + item).isDirectory()) {
-            var children = walk(baseUrl, (path.length != 0 ? (path + '/') : path) + subDir, item);
-            if (children.length != 0) {
+        if (fs.statSync(baseUrl + (path.length !== 0 ? ('/'+path) : '')  + (subDir.length !== 0 ? ('/'+subDir) : '') + '/' + item).isDirectory()) {
+            var children = walk(baseUrl, (path.length !== 0 ? (path + '/') : path) + subDir, item);
+            if (children.length !== 0) {
                 fileList.push({
-                    path: (path.length != 0 ? (path + '/') : '') + (subDir.length != 0 ? (subDir + '/') : '') + item,
+                    path: (path.length !== 0 ? (path + '/') : '') + (subDir.length !== 0 ? (subDir + '/') : '') + item,
                     children: children
                 });
             }
@@ -73,7 +73,7 @@ function walk(baseUrl, path, subDir) {
             var markdownSuffix = ['.md', '.markdown'];
             if (markdownSuffix.indexOf(pathComponents.extname(item)) != -1) {
                 fileList.push({
-                    path: (path.length != 0 ? (path + '/') : '') + (subDir.length != 0 ? (subDir + '/') : ''),
+                    path: (path.length !== 0 ? (path + '/') : '') + (subDir.length !== 0 ? (subDir + '/') : ''),
                     file: item
                 });
             }

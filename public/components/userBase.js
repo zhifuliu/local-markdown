@@ -9,11 +9,11 @@ function haveUser(userId) {
 
 function login (userId, pass) {
     var result = {};
-    if (haveUser(userId) != undefined) {
+    if (haveUser(userId) !== undefined) {
         var temp = _.find(users, function(user) {
            return user.id == userId && user.pass == pass;
        });
-       if (temp != undefined) {
+       if (temp !== undefined) {
            result = {
                errCode: 1,
                errMsg: '登录成功',
@@ -21,45 +21,45 @@ function login (userId, pass) {
                   id: temp.id,
                   nickname: temp.nickname
                }
-           }
+           };
        } else {
            result = {
                errCode: -1,
                errMsg: '密码错误'
-           }
+           };
        }
     } else {
         result = {
             errCode: -1,
             errMsg: '用户不存在'
-        }
+        };
     }
     return result;
 }
 
 function register(userId, pass, nickname) {
     var result = {};
-    if (haveUser(userId) != undefined) {
+    if (haveUser(userId) !== undefined) {
         result = {
             errCode: -1,
             errMsg: '用户已存在'
-        }
+        };
     } else {
         result = {
             errCode: 1,
             errMsg: 'register success'
-        }
+        };
     }
     return result;
 }
 
 function getUserMsg(userId) {
     var userMsg = haveUser(userId);
-    if (userMsg != undefined) {
+    if (userMsg !== undefined) {
         return {
             errCode: -1,
             errMsg: '用户已存在'
-        }
+        };
     } else {
         return userMsg;
     }
