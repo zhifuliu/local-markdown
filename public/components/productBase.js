@@ -45,7 +45,7 @@ function addProject(name, url) {
             url: url,
             lastUpdateTime: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString()
         });
-        fileOperation.writeJsonFile('./src/backend/projectList.json', JSON.stringify({list: list}));
+        fileOperation.writeJsonFile('./projectList.json', JSON.stringify({list: list}));
         return {
             errCode: 1,
             errMsg: 'add project success'
@@ -64,7 +64,7 @@ function deleteProject(name, url) {
         };
     } else {
         list = _.filter(list, function(item) {return item.name != name && item.url != url;});
-        fileOperation.writeJsonFile('./src/backend/projectList.json', JSON.stringify({list: list}));
+        fileOperation.writeJsonFile('./projectList.json', JSON.stringify({list: list}));
         return {
             errCode: 1,
             errMsg: 'delete project success'
