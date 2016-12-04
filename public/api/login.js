@@ -10,10 +10,8 @@ router.post('/', function(req, res) {
             req.session.userMsg = {};
             req.session.userMsg.user = result.data.id;
             req.session.userMsg.nickname = result.data.nickname;
-            res.send(result);
-        } else {
-            res.send(result);
         }
+        res.send(result);
     } else {
         res.send({
             errCode: -1,
