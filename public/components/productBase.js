@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var list = require('../../projectList.json').list;
 var fileOperation = require('./fileOperation');
+var pathExists = require('path-exists');
 
 function haveProject(name, url) {
     var result = {};
@@ -40,12 +41,17 @@ function addProject(name, url) {
     var result = {};
     result = haveProject(name, url);
     if (result.errCode != -1) {
-        list.push({
-            name: name,
-            url: url,
-            lastUpdateTime: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString()
-        });
-        fileOperation.writeJsonFile('./projectList.json', JSON.stringify({list: list}));
+        pathExists(url + '/.git')
+            .then(function(exists) {
+                var obj = {
+                    name: name,
+                    url: url,
+                    lastUpdateTime: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString()
+                };
+                obj.isGit = exists;
+                list.push(obj);
+                fileOperation.writeJsonFile('./projectList.json', JSON.stringify({list: list}));
+            });
         return {
             errCode: 1,
             errMsg: 'add project success'
