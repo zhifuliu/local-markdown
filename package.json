@@ -36,6 +36,7 @@
     "gulp-livereload": "^3.8.0",
     "gulp-nodemon": "^2.0.2",
     "nodegit": "^0.16.0",
+    "path-exists": "^3.0.0",
     "simple-git": "^1.63.0"
   }
 }
