@@ -17,14 +17,14 @@ app.use(bodyParser.urlencoded({
 }));
 // app.use(express.static('./test/'));
 app.use(cookieParser('', {
-    maxAge: 2 * 60 * 1000
+    maxAge: 24 * 60 * 60000
 }));
 // 使用  session 中间件
 app.use(
     session({
         secret: 'locale_markdown_write', // 建议使用 128 个字符的随机字符串。用于计算 hash 值并存放在 cookies 中
         cookie: {
-            maxAge: 20 * 60 * 1000
+            maxAge: 24 * 60 * 60000
         },
         resave: true,
         saveUninitialized: false
